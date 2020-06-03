@@ -16,6 +16,8 @@ class Board
             @grid.each_with_index do |c, j|
                 if [0, 1, 6, 7].include?(i)
                     @grid[i][j] = Piece.new([i, j])
+                else
+                    @grid[i][j] = NullPiece.new
                 end
             end
         end
@@ -32,7 +34,7 @@ class Board
     end
 
     def valid_start_pos?(pos)
-        self[pos] != nil
+        !self[pos].ia_a?(NullPiece)
     end
 
     def move_piece(start_pos, end_pos)
@@ -40,7 +42,7 @@ class Board
         pos.each {|ele| raise "Pos out of bounds" if !(0..7).include? ele}
         raise "No piece at start pos" if !valid_start_pos?(start_pos)
         self[end_pos] = self[start_pos]
-        self[start_pos] = nil
+        self[start_pos] = NullPiece.new
     end
 end
 

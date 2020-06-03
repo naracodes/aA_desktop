@@ -1,45 +1,3 @@
-module Slideable
-
-    HORIZONTAL_DIRS = [[1,0]]
-    def hor_dir
-        (0..7).map { |idx| [self.pos.first, idx] }
-        .reject { |pos| pos == self.pos }
-        
-    end
-
-
-    def vert_dir
-        (0..7).map { |idx| [idx, self.pos.last] }
-        .reject { |pos| pos == self.pos }
-    end
-    
-    def diag_dir
-        
-        #right to left
-        max = self.pos.inject(:-)
-        right_to_left = (max..7).map { |row_i| [row_i, (row_i - max).abs] }
-        .reject { |pos| pos == self.pos }
-        .reject { |pos| pos.first < 0 || pos.last > 7 }
-        
-        #left to right
-        max = self.pos.sum
-        left_to_right = (0..max).map { |row_i| [row_i, (row_i - max).abs] }
-        .reject { |pos| pos == self.pos }
-        .reject { |pos| pos.first > 7 || pos.last > 7 }
-
-        left_to_right + right_to_left
-    end
-
-    def moves(cur_pos)
-        move_dirs
-        # if self.is_a? Rook
-        #     return self.hor_dir + self.vert_dir
-        # elsif self.is_a? Queen
-        #     return self.hor_dir + self.vert_dir + self.diag_dir
-        # elsif self
-    end
-end
-
 class Piece
     include Slideable
     
@@ -55,25 +13,8 @@ end
 
 
 
-module Stepable
-    
-end
 
-class Rook < Piece
-    include Slideable
-end
 
-class Bishop < Piece
-    include Slideable
-end
-
-class Queen < Piece
-    include Slideable
-
-    def move_dirs
-        [0,1]
-    end
-end
 
 
 

@@ -1,4 +1,5 @@
 require_relative "stepable.rb"
+require_relative "piece.rb"
 class King < Piece
     include Stepable
     def symbol
@@ -7,6 +8,14 @@ class King < Piece
         else
             "♔".red
         end
+    end
+
+    # def inspect
+    #     "♔"
+    # end
+
+    def to_s
+        "♔"
     end
 
     def move_diffs

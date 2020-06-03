@@ -1,12 +1,14 @@
-require_relative "stepable.rb"
+
 
 class Piece
-    include Slideable
     
-    attr_reader :pos
-    def initialize (pos)
+    attr_reader :pos, :board, :color
+    def initialize (color, board, pos)
+        @color = color
+        @board = board
         @pos = pos
     end
+
 
     def inspect
         "P"

@@ -1,4 +1,5 @@
 require_relative "piece.rb"
+require_relative "slideable.rb"
 
 class Rook < Piece
     def symbol
@@ -7,6 +8,10 @@ class Rook < Piece
         else
             "♖".red
         end
+    end
+
+    def to_s
+         "♖"
     end
 
     def move_dirs

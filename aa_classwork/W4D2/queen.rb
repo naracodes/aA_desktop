@@ -1,4 +1,5 @@
-require_relative "slidable.rb"
+require_relative "slideable.rb"
+require_relative "piece.rb"
 class Queen < Piece
     include Slideable
 
@@ -8,6 +9,14 @@ class Queen < Piece
         else
             "♕".red
         end
+    end
+
+    # def inspect
+    #     "♕"
+    # end
+
+    def to_s
+        "♕"
     end
 
     def move_dirs

@@ -44,7 +44,7 @@ class Board
                     @grid[i][4] = King.new(:black, self, [i, j])
                     @grid[i][3] = Queen.new(:black, self, [i, j])
                 else
-                    @grid[i][j] = NullPiece.new
+                    @grid[i][j] = NullPiece.instance()
                 end
             end
         end
@@ -61,7 +61,7 @@ class Board
     end
 
     def valid_start_pos?(pos)
-        !self[pos].ia_a?(NullPiece)
+        !self[pos].is_a?(NullPiece)
     end
 
     def move_piece(start_pos, end_pos)
@@ -69,20 +69,35 @@ class Board
         pos.each {|ele| raise "Pos out of bounds" if !(0..7).include? ele}
         raise "No piece at start pos" if !valid_start_pos?(start_pos)
         self[end_pos] = self[start_pos]
-        self[start_pos] = NullPiece.new
+        self[start_pos] = NullPiece.instance()
     end
 end
 
+
+
 board = Board.new()
 
-board.grid.each {|row| p row}
+board.grid.each {|row| print row}
 puts
 puts
 
-p board.grid[1][3].diag_dir
-# board.move_piece([1, 1], [3,3])
+# p board.grid[1][3].diag_dir
+# board.move_piece([0, 1], [2,3])
 
-# board.grid.each {|row| p row}
+
+board.move_piece([1,1], [2,1])
+puts "aa"
+p board.grid[0][4].moves
+puts "bb"
+
+
+board.grid.each_with_index do |row, i|
+    board.grid.each_with_index do|col, j|
+        print (board.grid[i][j].to_s + " ")
+    end
+    puts
+end
+
 # p board.grid
 
 

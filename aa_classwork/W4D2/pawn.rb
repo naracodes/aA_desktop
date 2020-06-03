@@ -1,5 +1,8 @@
 require "colorize"
-class Pawn
+require_relative "NullPiece.rb"
+require_relative "piece.rb"
+
+class Pawn < Piece
 
     def symbol
         if self.color == :white
@@ -9,12 +12,21 @@ class Pawn
         end
     end
 
+    # def inspect
+    #      "♟︎"
+    # end
+
+    def to_s
+        "♟︎"
+    end
+
+
     def moves
         forward_steps() + side_attacks()
     end
 
     def is_valid?(pos_x, pos_y)
-        @board[pos_x, pos_y].is_a?(NullPiece) && pos_x > -1 && pos_x < 8 && pos_y > -1 && pos_y < 8
+        @board[[pos_x, pos_y]].is_a?(NullPiece) && pos_x > -1 && pos_x < 8 && pos_y > -1 && pos_y < 8
     end
 
 
@@ -34,17 +46,22 @@ class Pawn
         dx = forward_dir
         if at_start_row?
             moves = [[x + dx, y], [x + (2 * dx), y]]
-            return moves.select { |move| is_valid?(move) }
+            return moves.select { |move| is_valid?(move[0], move[1]) }
         else
             return [x + dx, y] if is_valid?([x + dx, y])
         end
     end
 
+    require "byebug"
     def side_attacks
         x = self.pos[0]
         y = self.pos[1]
-        dx, dy = forward_dir, forward_dir 
-        moves = [[x+dx, y+dy], [x+dx, y-dy]].select { |move| self[move].color != self.color && pos_x > -1 && pos_x < 8 && pos_y > -1 && pos_y < 8 }
+        dx, dy = forward_dir, forward_dir
+        moves = [[x+dx, y+dy], [x+dx, y-dy]].select do |move| 
+            pos_x, pos_y = move[0], move[1]
+            # debugger
+            (@board[move].color != self.color) && (@board[move].color != nil) && (pos_x > -1 )&& (pos_x < 8) && (pos_y > -1 ) && (pos_y < 8 )
+        end
         moves
     end
 end

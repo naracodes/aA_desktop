@@ -1,3 +1,5 @@
+require_relative "stepable.rb"
+
 class Piece
     include Slideable
     

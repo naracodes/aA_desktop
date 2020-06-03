@@ -10,8 +10,13 @@ class Pawn
     end
 
     def moves
-        [[1, 0], [-1, 0]
+        forward_steps() + side_attacks()
     end
+
+    def is_valid?(pos_x, pos_y)
+        @board[pos_x, pos_y].is_a?(NullPiece) && pos_x > -1 && pos_x < 8 && pos_y > -1 && pos_y < 8
+    end
+
 
     private
     def at_start_row?
@@ -36,9 +41,12 @@ class Pawn
     end
 
     def side_attacks
-        
+        x = self.pos[0]
+        y = self.pos[1]
+        dx, dy = forward_dir, forward_dir 
+        moves = [[x+dx, y+dy], [x+dx, y-dy]].select { |move| self[move].color != self.color && pos_x > -1 && pos_x < 8 && pos_y > -1 && pos_y < 8 }
+        moves
     end
-
 end
 
 
@@ -47,13 +55,13 @@ end
 
 # 1. [], [], [], [], [], [], [], []
 
-# 2. [], [], [], [], [], [], [], []
+# 2. [], [], [], [], [P], [], [], []
 
-# 3. [], [], [], [], [], [], [], []
+# 3. [], [], [], [W], [], [W], [], []
 
-# 4. [], [], [], [], [], [], [], []
+# 4. [], [], [W], [], [W], [], [], []
 
-# 5. [], [], [], [], [], [], [], []
+# 5. [], [], [], [P], [], [], [], []
 
 # 6. [], [], [], [], [], [], [], []
 

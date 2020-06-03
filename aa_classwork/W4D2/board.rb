@@ -1,5 +1,12 @@
 
 require_relative "piece.rb"
+require_relative "rook.rb"
+require_relative "queen.rb"
+require_relative "knight.rb"
+require_relative "bishop.rb"
+require_relative "pawn.rb"
+require_relative "king.rb"
+require_relative "NullPiece.rb"
 
 class Board
 
@@ -14,8 +21,28 @@ class Board
         # debugger
         @grid.each_with_index do |r, i|
             @grid.each_with_index do |c, j|
-                if [0, 1, 6, 7].include?(i)
-                    @grid[i][j] = Piece.new([i, j])
+                if i == 6
+                    @grid[i][j] = Pawn.new(:white, self, [i, j])
+                elsif i == 1
+                    @grid[i][j] = Pawn.new(:black, self, [i, j])
+                elsif i == 7
+                    @grid[i][0] = Rook.new(:white, self, [i, j])
+                    @grid[i][7] = Rook.new(:white, self, [i, j])
+                    @grid[i][1] = Knight.new(:white, self, [i, j])
+                    @grid[i][6] = Knight.new(:white, self, [i, j])
+                    @grid[i][2] = Bishop.new(:white, self, [i, j])
+                    @grid[i][5] = Bishop.new(:white, self, [i, j])
+                    @grid[i][4] = King.new(:white, self, [i, j])
+                    @grid[i][3] = Queen.new(:white, self, [i, j])
+                elsif i == 0
+                    @grid[i][0] = Rook.new(:black, self, [i, j])
+                    @grid[i][7] = Rook.new(:black, self, [i, j])
+                    @grid[i][1] = Knight.new(:black, self, [i, j])
+                    @grid[i][6] = Knight.new(:black, self, [i, j])
+                    @grid[i][2] = Bishop.new(:black, self, [i, j])
+                    @grid[i][5] = Bishop.new(:black, self, [i, j])
+                    @grid[i][4] = King.new(:black, self, [i, j])
+                    @grid[i][3] = Queen.new(:black, self, [i, j])
                 else
                     @grid[i][j] = NullPiece.new
                 end
@@ -60,7 +87,7 @@ p board.grid[1][3].diag_dir
 
 
 #    0   1   2    3   4   5   6   7    
-# 0. [], [], [], [], [], [], [], []
+# 0. [], [], [], [], [k], [], [], []
 
 # 1. [], [], [], [], [], [], [], []
 
@@ -74,7 +101,7 @@ p board.grid[1][3].diag_dir
 
 # 6. [], [], [], [], [], [], [], []
 
-# 7. [], [], [], [], [], [], [], []
+# 7. [], [], [], [], [k], [], [], []
 
 
 # [nil, P, P, P, P, P, P, P]

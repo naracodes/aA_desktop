@@ -1,5 +1,5 @@
-
 require_relative "piece.rb"
+
 class Rook < Piece
     def symbol
         if self.color == :white

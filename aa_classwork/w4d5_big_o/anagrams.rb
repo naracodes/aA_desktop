@@ -55,10 +55,13 @@ end
 
 # What is the time complexity?
 
+# This method does not work because if we had "ccat" and "catt", it would return true when it's false!
+
 def fourth_anagram?(str1, str2)
     (str1.chars - str2.chars).empty? && str1.size == str2.size
 end
 
+#-----------Works----------------#
 def fourth_anagram?(str1, str2)
     hash_chars(str1) == hash_chars(str2)
 end
@@ -70,4 +73,4 @@ def hash_chars(str)
 end
 
 p fourth_anagram?("gizmo", "sally")    #=> false
-p fourth_anagram?("elvis", "lives")    #=> true
+p fourth_anagram?("catt", "ccat")    #=> true

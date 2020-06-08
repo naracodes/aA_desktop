@@ -11,14 +11,34 @@
 # What is the time complexity for this function?
 
 def my_min(arr)
-    (0...arr.length - 1).each do |i|
-        ((i + 1)...arr.length).each do |j|
-            if arr[i] >
-                
-            end
+    arr.each do |num|
+        if arr.all? { |other_num| other_num > num }
+            return num
         end
     end
 end
 
 list = [ 0, 3, 5, 4, -5, 10, 1, 90 ]
-my_min(list)  # =>  -5
+p my_min(list)  # =>  -5
+
+
+
+
+
+
+# Phase II
+# Now rewrite the function to iterate through the list just once while keeping track
+# of the minimum. What is the time complexity?
+
+# def my_min(arr)
+#     min = arr.first
+#     (1...arr.length - 1).each do |i|
+#         if arr[i] < min
+#             min = arr[i]
+#         end
+#     end
+#     min
+# end
+
+
+

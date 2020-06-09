@@ -33,17 +33,37 @@ end
 
 # HASHMAP
 
-def two_sum?(arr, target)
-    hash = {}
-    arr.each do |num|
-        if hash[target - num]
-             return true
-        end
-        hash[num] = true
-    end
-    false
-end
+# def two_sum?(arr, target)
+#     hash = {}
+#     arr.each do |num|
+#         if hash[target - num]
+#              return true
+#         end
+#         hash[num] = true
+#     end
+#     false
+# end
 
+# def two_sum?(arr, target)
+#     hash = {}
+#     arr.each do |num|
+#         if hash[target - num]
+#              return [arr.index(target - num), arr.index(num)]
+#         end
+#         hash[num] = true
+#     end
+#     false
+# end
+
+def two_sum?(arr, target)
+    complements = {}
+    arr.each_with_index do |el, i|
+        complement, j = complements[target - el]
+        return [i, j] if complement
+        complements[el] = [el, i]
+    end
+    nil
+end
 
 arr = [0, 1, 5, 7]
 p two_sum?(arr, 6) # => should be true

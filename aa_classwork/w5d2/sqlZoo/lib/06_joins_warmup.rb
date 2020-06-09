@@ -113,11 +113,10 @@ def casablanca_cast
   # in the previous question directly in your query (for example, id = 1).
   execute(<<-SQL)
     SELECT
-      ord
+      name
     FROM
-      castings
-    JOIN movies ON castings.movie_id = movies.id
-    WHERE title = 'Casablanca'
+    actors JOIN castings ON actors.id = castings.actor_id
+    WHERE castings.movie_id = '27'
   SQL
 end
 

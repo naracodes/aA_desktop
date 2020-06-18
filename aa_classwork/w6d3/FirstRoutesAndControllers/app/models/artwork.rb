@@ -11,18 +11,19 @@
 #
 class Artwork < ApplicationRecord
     validates :title, presence: true, uniqueness: true
-    validates :image_url, presence: true
+    validates :image_url, presence: true, uniqueness: true
     validates :artist_id, presence: true, uniqueness: true
+
 
     belongs_to :artist,
         foreign_key: :artist_id,
         class_name: :User
     
-    has_one :image_url,
-        through: :artist,
-        source: :artworks
+    # has_one :image_url,
+    #     through: :artist,
+    #     source: :artworks
 
-    has_many :shared_viewers,
+    has_many :shared_viewers, dependent: :destroy,
         through: :artists, 
         source: :viewer
         

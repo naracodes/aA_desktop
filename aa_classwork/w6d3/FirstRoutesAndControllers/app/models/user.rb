@@ -10,13 +10,13 @@
 class User < ApplicationRecord
     # validates :name, presence: true
     # validates :email, presence: true
-    validates :username, presence: true
+    validates :username, presence: true, uniqueness: true
 
-    has_many :artworks,
+    has_many :artworks, dependent: :destroy,
         foreign_key: :artist_id,
         class_name: :Artwork
 
-    has_many :shared_artworks,
-        through: :artworks, 
-        source: :artwork
+    has_many :shared_artworks, dependent: :destroy,
+        through: :artworks,
+        source: :artist
 end

@@ -1,0 +1,26 @@
+<h1> 
+<%=  @kitty.name %> 
+</h1>
+
+<table>
+    <tr>
+        <td> Birthday: </td>
+        <td> <%= @kitty.birth_date %> </td>
+    </tr>
+    <tr>
+        <td> Color: </td>
+        <td> <%= @kitty.color %> </td>
+    </tr>
+    <tr>
+        <td> Sex: </td>
+        <td> <%= @kitty.sex %> </td>
+    </tr>
+</table>
+
+<p> Description: <%= @kitty.description %> </p>
+
+<%= link_to 'Back to cats!', cats_url %>
+
+<br><br>
+<%= link_to 'Change your cat!', edit_cat_url(@kitty) %>
+

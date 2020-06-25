@@ -8,7 +8,7 @@
 
 .language-nav {
 	position: absolute;
-	top: -15px;
+	top: 15px;
 	left: calc(50% - (177.78px/2));
 	background: white;
 	border: 1px solid $light-gray;
@@ -28,14 +28,15 @@
 .language-nav ul {
 	display: flex;
 }
-
-.logo {
+ 
+.logo { 
 	max-width: 400px;
-	margin-top: 10px;
+	margin-top: 25px;
 }
 
 .masthead-links {
 	display: flex;
+	align-items: center;
 	font-family: $sans-serif;
 	font-size: 11px;
 	margin-top: 10px;
@@ -45,6 +46,11 @@
 .masthead-links li {
 	margin-left: 10px;
 	border-right: 1px solid $light-gray;
+	padding: 5px;
+}
+
+.masthead-links.last-child {
+	border-right: 0;
 }
 
 .masthead-links button {
@@ -72,3 +78,9 @@
 .masthead-links strong {
 	color: green;
 }
+
+.masthead-links > ul {
+	display: flex;
+	align-items: center;
+}
+

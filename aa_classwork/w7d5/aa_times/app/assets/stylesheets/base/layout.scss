@@ -7,10 +7,12 @@ html {
 
 body {
 	// ...
-	width: 80%;
+	width: 90%;
 	margin: 0 auto;
 	font-family: $serif;
 	font-size: 12px;
+	// margin-left: 20px;
+    // margin-right: 20px;
 }
 
 // .main-nav {
@@ -48,14 +50,18 @@ button {
 	
 }
 
-#cog-modal-btn, #search-modal-btn, #sections-sidebar-btn  {
+.fa-cog, #search-modal-btn, #sections-sidebar-btn  {
 	transition: all 0.6s ease 0s;
 		:hover {
 			background-color: $light-gray;
+			color: red;
 			cursor: pointer;
 		}
-	
 }
+
+// .right-nav ul li:hover{
+// 	background-color: lightgray;
+// }
 
 button:hover {
 	background-color: $dark-blue;
@@ -113,9 +119,10 @@ hr {
 	position: relative;
 }
 
+
+
 .hidden {
 	display: none;
-	// position: absolute;
 }
 
 // .gear-dropdown:hover > .editions {

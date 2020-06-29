@@ -1,0 +1,6 @@
+class Sub < ApplicationRecord
+
+
+
+
+end

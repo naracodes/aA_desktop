@@ -1,4 +1,7 @@
 import FlappyBird from './game';
 
+
 const canvas = document.getElementById('bird-game');
-new FlappyBird(canvas);
+const flappyBirdGame = new FlappyBird(canvas);
+debugger;
+flappyBirdGame.restart();

@@ -10,7 +10,7 @@ export default class FlappyBird {
   //   {transform: "translateY(0px)"},
   //   {transform: "translateY(-300px)"}
   // ], {
-  //   duration: 1000, 
+  //   duration: 1000, ovi
   //   iterations: infinity
   // })
 

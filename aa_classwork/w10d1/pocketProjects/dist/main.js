@@ -90,10 +90,11 @@
 /*!*****************************!*\
   !*** ../clockNode/clock.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: Clock */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("class Clock {\n  constructor() {\n    // 1. Create a Date object.\n    const currentTime = new Date();\n\n    // 2. Store the hour, minute, and second.\n    this.hours = currentTime.getHours();\n    this.minutes = currentTime.getMinutes();\n    this.seconds = currentTime.getSeconds();\n\n    // 3. Call printTime.\n    this.printTime();\n\n    // 4. Schedule the tick at 1 second intervals.\n    setInterval(this._tick.bind(this), 1000);\n  }\n\n  printTime() {\n    // Format the time in HH:MM:SS\n    const timeString = [this.hours, this.minutes, this.seconds].join(\":\");\n\n    // Use console.log to print it.\n    console.log(timeString);\n  }\n\n  _tick() {\n    // 1. Increment the time by one second.\n    this._incrementSeconds();\n\n    // 2. Call printTime.\n    this.printTime();\n  }\n\n  _incrementSeconds() {\n    // 1. Increment the time by one second.\n    this.seconds += 1;\n    if (this.seconds === 60) {\n      this.seconds = 0;\n      this._incrementMinutes();\n    }\n  }\n\n  _incrementMinutes() {\n    this.minutes += 1;\n    if (this.minutes === 60) {\n      this.minutes = 0;\n      this._incrementHours();\n    }\n  }\n\n  _incrementHours() {\n    this.hours = (this.hours + 1) % 24;\n  }\n}\n\nconst clock = new Clock();\n\n\n//# sourceURL=webpack:///../clockNode/clock.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Clock\", function() { return Clock; });\n/* harmony import */ var _pocketProjects_src_warmup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../pocketProjects/src/warmup */ \"./src/warmup.js\");\n\n\nclass Clock {\n  constructor() {\n    // 1. Create a Date object.\n    const currentTime = new Date();\n\n    // 2. Store the hour, minute, and second.\n    this.hours = currentTime.getHours();\n    this.minutes = currentTime.getMinutes();\n    this.seconds = currentTime.getSeconds();\n\n    // 3. Call printTime.\n    this.printTime();\n\n    // htmlGenerator(this.printTime(), clockElement);\n    // 4. Schedule the tick at 1 second intervals.\n    setInterval(this._tick.bind(this), 1000);\n  }\n  \n  printTime() {\n    // Format the time in HH:MM:SS\n    const timeString = [this.hours, this.minutes, this.seconds].join(\":\");\n    \n    // Use console.log to print it.\n    // console.log(timeString);\n    // return timeString;\n    Object(_pocketProjects_src_warmup__WEBPACK_IMPORTED_MODULE_0__[\"htmlGenerator\"])(timeString, clockElement);\n  }\n  \n  _tick() {\n    // 1. Increment the time by one second.\n    this._incrementSeconds();\n    \n    // 2. Call printTime.\n    this.printTime();\n  }\n\n  _incrementSeconds() {\n    // 1. Increment the time by one second.\n    this.seconds += 1;\n    if (this.seconds === 60) {\n      this.seconds = 0;\n      this._incrementMinutes();\n    }\n  }\n\n  _incrementMinutes() {\n    this.minutes += 1;\n    if (this.minutes === 60) {\n      this.minutes = 0;\n      this._incrementHours();\n    }\n  }\n\n  _incrementHours() {\n    this.hours = (this.hours + 1) % 24;\n  }\n}\n\nconst clockElement = document.getElementById(\"clock\");\nlet clock = new Clock();\n\n\n// htmlGenerator(clock, clockElement);\n\n//# sourceURL=webpack:///../clockNode/clock.js?");
 
 /***/ }),
 
@@ -105,7 +106,18 @@ eval("class Clock {\n  constructor() {\n    // 1. Create a Date object.\n    con
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _clockNode_clock__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../clockNode/clock */ \"../clockNode/clock.js\");\n/* harmony import */ var _clockNode_clock__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_clockNode_clock__WEBPACK_IMPORTED_MODULE_0__);\n\n\n\n\n//# sourceURL=webpack:///./src/clock.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _clockNode_clock__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../clockNode/clock */ \"../clockNode/clock.js\");\n/* harmony import */ var _warmup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./warmup */ \"./src/warmup.js\");\n\n\n\n// const clockElement = document.getElementById('clock') ;\n// let clock = new Clock();\n\n// htmlGenerator(clock, clockElement);\n\n\n//# sourceURL=webpack:///./src/clock.js?");
+
+/***/ }),
+
+/***/ "./src/drop_down.js":
+/*!**************************!*\
+  !*** ./src/drop_down.js ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("\nconst dogs = {\n  \"Corgi\": \"https://www.akc.org/dog-breeds/cardigan-welsh-corgi/\",\n  \"Australian Shepherd\": \"https://www.akc.org/dog-breeds/australian-shepherd/\",\n  \"Affenpinscher\": \"https://www.akc.org/dog-breeds/affenpinscher/\",\n  \"American Staffordshire Terrier\": \"https://www.akc.org/dog-breeds/american-staffordshire-terrier/\",\n  \"Tosa\": \"https://www.akc.org/dog-breeds/tosa/\",\n  \"Labrador Retriever\": \"https://www.akc.org/dog-breeds/labrador-retriever/\",\n  \"French Bulldog\": \"https://www.akc.org/dog-breeds/french-bulldog/\" \n};\n\nfunction dogLinkCreator() {\n  const dogLinks = [];\n  const dogBreeds = Object.keys(dogs);\n  dogBreeds.forEach(breed => {\n    // debugger;\n    let anchor = document.createElement('a');\n    anchor.innerHTML = breed;\n    anchor.href = dogs[breed];\n    let list = document.createElement('li');\n    // list.classList.add('dog-link');\n    list.className += 'dog-link';\n    list.appendChild(anchor);\n    dogLinks.push(list);\n    // dogLinks.push(list.appendChild(anchor));\n  })\n\n  return dogLinks;\n}\n\nfunction attachDogLinks() {\n  let dogLinks = dogLinkCreator();\n  // debugger;\n  dogLinks.forEach (link => {\n    let dropDown = document.getElementsByClassName('drop-down-dog-list')[0];\n    // let dropDown = document.querySelector('.drop-down-dog-list');\n    // debugger;\n    dropDown.appendChild(link);\n  });\n};\n\nfunction handleEnter() {\n  let mouseTarget = document.querySelector('.drop-down-dog-nav');\n  mouseTarget.addEventListener(\"mouseenter\", e => {\n    let links = document.querySelectorAll('.dog-link');\n    links.forEach(link => {\n      link.style.display = \"block\";\n    });\n    // link.hidden = false;\n  });\n}\n\nfunction handleLeave() {\n  let mouseTarget = document.querySelector('.drop-down-dog-nav');\n  mouseTarget.addEventListener(\"mouseleave\", e => {\n    let links = document.querySelectorAll('.dog-link');\n    links.forEach(link => {\n      link.style.display = \"none\";\n    })\n  });\n}\n\n// function handleEnter () {\n//   let dropDown = document.querySelectorAll('dog-link');\n//   dropDown.forEach (el => {\n//     el.style.display = \"block\"\n//   });\n\n// };\n\n// function handleLeave () {\n//   let dropDown = document.querySelectorAll('dog-link');\n//   dropDown.forEach (el => {\n//     el.style.display = \"none\"\n//   });\n\n// };\n\n// const parentDropDown = document.querySelector('.drop-down-dog-nav');\n\n// parentDropDown.addEventListener(\"mouseenter\", handleEnter)\n// parentDropDown.addEventListener(\"mouseleave\", handleLeave);\n\nattachDogLinks();\nhandleEnter();\nhandleLeave();\n\n//# sourceURL=webpack:///./src/drop_down.js?");
 
 /***/ }),
 
@@ -117,7 +129,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _clo
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _warmup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./warmup */ \"./src/warmup.js\");\n/* harmony import */ var _clock__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./clock */ \"./src/clock.js\");\n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _warmup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./warmup */ \"./src/warmup.js\");\n/* harmony import */ var _clock__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./clock */ \"./src/clock.js\");\n/* harmony import */ var _drop_down__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./drop_down */ \"./src/drop_down.js\");\n/* harmony import */ var _drop_down__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_drop_down__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _todo_list__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./todo_list */ \"./src/todo_list.js\");\n/* harmony import */ var _todo_list__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_todo_list__WEBPACK_IMPORTED_MODULE_3__);\n\n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/todo_list.js":
+/*!**************************!*\
+  !*** ./src/todo_list.js ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("throw new Error(\"Module parse failed: Identifier 'list' has already been declared (36:4)\\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\\n| \\n| listOfTodos.addEventListener(\\\"submit\\\", addTodo); \\n> let list = document.querySelector('.todos');\\n| list.addEventListener(\\\"click\\\", function(){\\n| \");\n\n//# sourceURL=webpack:///./src/todo_list.js?");
 
 /***/ }),
 
@@ -129,7 +152,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _war
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"htmlGenerator\", function() { return htmlGenerator; });\n\nconst partyHeader = document.getElementById('party');\n\nconst htmlGenerator = (string, htmlElement) => {\n    let paragraph = document.createElement('p');\n    let paragraphText = document.createTextNode(string);\n    paragraph.appendChild(paragraphText);\n    htmlElement.appendChild(paragraph);\n};\n\nhtmlGenerator('Party Time.', partyHeader);\n// htmlGenerator('I <3 Vanilla DOM manipulation', partyHeader);\n\n// module.exports = htmlGenerator;\n\n//# sourceURL=webpack:///./src/warmup.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"htmlGenerator\", function() { return htmlGenerator; });\n\nconst partyHeader = document.getElementById('party');\n\n// export const htmlGenerator = (string, htmlElement) => {\n//     let paragraph = document.createElement('p');\n//     let paragraphText = document.createTextNode(string);\n//     paragraph.appendChild(paragraphText);\n//     htmlElement.appendChild(paragraph);\n// };\n\nconst htmlGenerator = (string, htmlElement) => {\n    let children = Array.from(htmlElement.children);\n    if (children.length) {\n        htmlElement.removeChild(children[0]);\n    }\n    let paragraph = document.createElement('p');\n    let paragraphText = document.createTextNode(string);\n    paragraph.appendChild(paragraphText);\n    htmlElement.appendChild(paragraph);\n};\nhtmlGenerator('Party Time.', partyHeader);\n\n// htmlGenerator('I <3 Vanilla DOM manipulation', partyHeader);\n\n// module.exports = htmlGenerator;\n\n//# sourceURL=webpack:///./src/warmup.js?");
 
 /***/ })
 

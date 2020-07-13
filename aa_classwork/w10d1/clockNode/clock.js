@@ -1,3 +1,5 @@
+import { htmlGenerator } from "../pocketProjects/src/warmup";
+
 export class Clock {
   constructor() {
     // 1. Create a Date object.
@@ -11,22 +13,25 @@ export class Clock {
     // 3. Call printTime.
     this.printTime();
 
+    // htmlGenerator(this.printTime(), clockElement);
     // 4. Schedule the tick at 1 second intervals.
     setInterval(this._tick.bind(this), 1000);
   }
-
+  
   printTime() {
     // Format the time in HH:MM:SS
     const timeString = [this.hours, this.minutes, this.seconds].join(":");
-
+    
     // Use console.log to print it.
-    console.log(timeString);
+    // console.log(timeString);
+    // return timeString;
+    htmlGenerator(timeString, clockElement);
   }
-
+  
   _tick() {
     // 1. Increment the time by one second.
     this._incrementSeconds();
-
+    
     // 2. Call printTime.
     this.printTime();
   }
@@ -52,3 +57,9 @@ export class Clock {
     this.hours = (this.hours + 1) % 24;
   }
 }
+
+const clockElement = document.getElementById("clock");
+let clock = new Clock();
+
+
+// htmlGenerator(clock, clockElement);
